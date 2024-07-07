@@ -1,0 +1,50 @@
+footer {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #666464;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 20px 0; 
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.footer-content .contact-info {
+  flex: 1;
+  text-align: left;
+  margin-left: 20px; 
+}
+
+.footer-content .social-links {
+  flex: 1;
+  text-align: right;
+  margin-right: 20px; 
+}
+
+.social-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.social-links img:hover {
+  color: #ccc;
+}
+
+.copyright {
+  clear: both;
+  margin-top: 10px;
+}
+
+ img {
+  width: 30px; 
+  height: auto; 
+}

@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../../../style.css" />
+
+<div class="form-group">
+  <label for="estado">Estado:</label>
+  <select id="estado" name="estado" required>
+    <option value="">Selecione um estado</option>
+  </select>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch("uf.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const selectElement = document.getElementById("estado");
+        for (const key in data) {
+          const option = document.createElement("option");
+          option.value = key;
+          option.text = data[key];
+          selectElement.add(option);
+        }
+      })
+      .catch((error) => console.error("Error fetching JSON data:", error));
+  });
+</script>
