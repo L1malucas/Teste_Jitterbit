@@ -1,93 +1,82 @@
-# Formulário de Pedido - Desafio 2 - Jitterbit
+# API de Gerenciamento de Pedidos -  Desafio 1 - Jitterbit
 
-## Índice
+Uma API simples desenvolvida em Node.js para gerenciar pedidos e armazenar dados em um banco de dados SQL.
 
-1. [Introdução](#introdução)
-2. [Estrutura do Projeto](#estrutura-do-projeto)
-3. [JavaScript](#javascript)
-4. [Componentes](#componentes)
-5. [Funcionamento](#funcionamento)
+## Sumário
 
-## Introdução
+- [Visão Geral](#visão-geral)
+- [Requisitos](#requisitos)
+- [Instalação](#instalação)
+- [Estrutura do Banco de Dados](#estrutura-do-banco-de-dados)
+- [Uso](#uso)
 
-Este projeto consiste em um formulário de pedido para um e-commerce, desenvolvido com HTML, CSS e JavaScript. O objetivo é coletar informações do cliente e do pedido, incluindo dados pessoais, endereço de entrega e detalhes do pedido.
 
-## Estrutura do Projeto
+## Visão Geral
 
-O projeto é organizado da seguinte forma:
+Esta API permite realizar operações básicas de CRUD (Criar, Ler, Atualizar, Deletar) sobre pedidos, utilizando um banco de dados SQL (MySQL neste exemplo) para armazenamento dos dados.
+
+## Estrutura de Pastas
 
 ```
-/
-├── index.html
-├── style.css
-├── README.MD
-├── .gitignore
-└── src/
-    └── assets/
-        ├── logo-jitterbit.svg/
-        └── images-redes-sociais.png
-    └── components/
-        ├── header/
-        │   └── header.html
-        ├── footer/
-        │   └── footer.html
-        └── endereco/
-            └── estados.html
-            └── uf.json
+.
+├── db.js            # Configuração da conexão com o banco de dados
+├── package.json     # Descrição do projeto e dependências
+├── server.js        # Configuração do servidor Express e definição dos endpoints da API
+├── .env             # Arquivo de configuração das variáveis de ambiente (não versionado)
+└── README.md        # Documentação do projeto
 ```
+## Requisitos
 
-## JavaScript
+- Node.js
+- MySQL
 
-### Validação e Exibição dos Dados do Formulário (script.js)
+## Instalação
 
-```javascript
-function exibirDados(event) {
-  event.preventDefault();
-  const form = document.getElementById("order-form");
-  const formData = new FormData(form);
-  let dados = "";
-  for (const pair of formData.entries()) {
-    dados += `${pair[0]}: ${pair[1]}\n`;
-  }
-  alert(`Dados do formulário:\n${dados}`);
-  return false;
-}
-```
+1. **Clone o repositório:**
 
-## Componentes
+   ```bash
+   git clone https://github.com/seu-usuario/seu-repositorio.git
+   cd seu-repositorio
+   ```
 
-### Header (header.html)
+2. **Instale as dependências:**
 
-```html
-<header>
-  <!-- Conteúdo do header -->
-</header>
-```
+   ```bash
+   npm install
+   ```
 
-### Footer (footer.html)
+3. **Configure as variáveis de ambiente:**
 
-```html
-<footer>
-  <!-- Conteúdo do footer -->
-</footer>
-```
+   Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
 
-### Dropdown de Estados (estados.html)
+   ```env
+   DB_HOST=localhost
+   DB_USER=seu_usuario
+   DB_PASSWORD=sua_senha
+   DB_DATABASE=nome_do_seu_banco_de_dados
+   ```
 
-```html
-<label for="estado">Estado:</label>
-<select id="estado" name="estado" required>
-  <option value="">Selecione o estado</option>
-  <option value="SP">São Paulo</option>
-  <option value="RJ">Rio de Janeiro</option>
-  <!-- Outros estados -->
-</select>
-```
+4. **Inicie o servidor:**
 
-## Funcionamento
+   ```bash
+   npm start
+   ```
 
-1. O formulário é composto por três partes principais: Informações do Cliente, Endereço de Entrega e Informações do Pedido.
-2. Campos obrigatórios são indicados com o atributo `required`.
-3. O formulário é validado e exibido via JavaScript.
-4. Componentes reutilizáveis, como o header, footer e dropdown de estados, são importados via `iframe`.
+5. A API estará acessível em `http://localhost:3000`.
 
+## Estrutura do Banco de Dados
+
+A API utiliza um banco de dados SQL com as seguintes tabelas:
+
+### Tabela `Order`
+
+- `orderId` VARCHAR(255) (Chave primária)
+- `value` DECIMAL(10, 2) NOT NULL
+- `creationDate` DATETIME NOT NULL
+
+### Tabela `Items`
+
+- `orderId` VARCHAR(255) (Chave estrangeira referenciando `Order`)
+- `productId` INT
+- `quantity` INT
+- `price` DECIMAL(10, 2)

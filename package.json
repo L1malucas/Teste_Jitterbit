@@ -1,0 +1,20 @@
+{
+  "name": "teste_jitterbit",
+  "version": "1.0.0",
+  "description": "1. [Introdução](#introdução)\r 2. [Estrutura do Projeto](#estrutura-do-projeto)\r 3. [JavaScript](#javascript)\r 4. [Componentes](#componentes)\r 5. [Funcionamento](#funcionamento)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "consign": "^0.1.6",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mssql": "^11.0.1",
+    "path": "^0.12.7",
+    "util": "^0.12.5"
+  }
+}
